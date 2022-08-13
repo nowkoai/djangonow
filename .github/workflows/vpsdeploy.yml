@@ -1,0 +1,25 @@
+name: VPS Deploy CI
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: DjangoをVPSに自動デプロイ
+        uses: appleboy/ssh-action@master
+        with:
+          key: ${{ secrets.SECRET_KEY }}
+          host: ${{secrets.SSH_HOST}}
+          username: ${{secrets.SSH_USERNAME}}
+          port: ${{secrets.SSH_PORT}}
+          script: |
+            cd djangonow
+            git pull origin main
+            source venv/bin/activate
+            pip3 install -r requirements.txt
+            python3 manage.py migrate
+            python3 manage.py collectstatic --noinput
+            sudo systemctl restart gunicorn.socket
