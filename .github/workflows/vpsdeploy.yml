@@ -1,4 +1,4 @@
-name: VPS Deploy CI
+name: AWS Deploy CI
 on:
   push:
     branches: [main]
@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: DjangoをVPSに自動デプロイ
+      - name: DjangoをAWSに自動デプロイ
         uses: appleboy/ssh-action@master
         with:
           key: ${{ secrets.SECRET_KEY }}
