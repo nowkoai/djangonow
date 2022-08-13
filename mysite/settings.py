@@ -12,8 +12,16 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
+import environ
+import os
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+env = environ.Env()
+env.read_env(os.path.join(BASE_DIR, '.env'))
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -74,11 +82,27 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     # "default": {
+#     #     "ENGINE": "django.db.backends.sqlite3",
+#     #     "NAME": BASE_DIR / "db.sqlite3",
+#     # }
+#
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'private_diary',
+#         # 'USER': os.environ.get('user'),
+#         # 'PASSWORD': os.environ.get('pass'),
+#         'HOST': '',
+#         'PORT': '',
+#     }
+# }
+
+
+# デフォルト:SQLite3
+# 環境ファイルで指定したデータベースを使用
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    'default': env.db(),
 }
 
 
