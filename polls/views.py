@@ -2,4 +2,4 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("ここが自動変更されればOKです！")
+    return HttpResponse("1111111111ここが自動変更されればOKです！")
