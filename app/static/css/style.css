@@ -1,0 +1,157 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	color: #383838;
+	width: 100%;
+}
+      
+body {
+	background-color: #e8e8e8;
+	min-height: 100vh;
+}
+
+.main{
+	display: flex;
+	width: 100%;
+}
+.content{
+	margin-left: 6%;
+}
+
+.wrapper{
+	height: 50px;
+	position: relative;
+	display: flex;
+	align-items:center;
+	justify-content: left;
+	margin-bottom: 20px;
+	border-radius: 5px;
+}
+
+input[type="checkbox"]{
+	appearance: none;
+	-webkit-appearance: none;
+	height: 32px;
+	width: 32px;
+	border: 3px solid;
+	border-color: #5e5e5e;
+	border-radius: 4px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	outline:none;
+}
+
+label{
+	margin-top: 8px;
+	cursor: pointer;
+	display:inline-block;
+	left: -5px;
+	padding: 4px 25px 4px 12px;
+	vertical-align:middle;
+}
+label:checked{
+	color: #e8e8e8;
+}
+
+input[type="checkbox"]:after{
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	content: "\f00c";
+	font-size: 24px;
+	color: #5e5e5e;
+	display: none;
+}
+
+input[type="checkbox"]:checked{
+	border:none;
+}
+
+input[type="checkbox"]:checked:after{
+	display: block;
+}
+.close{
+	width: 100px;
+}
+
+
+input[type="checkbox"]:checked + label {
+	/* チェックされたチェックボックス直後の.labelのスタイル */
+	color: #e8e8e8;
+	display: none;
+	flex-direction: row;
+}
+
+.navbar{
+	width: 20%;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	justify-content: flex-start;
+}
+.navbar-container{
+	-ms-writing-mode: tb-rl;
+	writing-mode: vertical-rl;
+	align-items: flex-start;
+	width: 100%;
+}
+h1{
+	letter-spacing: 12px;
+	margin-left:2vh;
+	font-size:25px;
+	border-top: 4px solid #353535;
+	width: fit-content;
+	text-align: center;
+	padding-top:2vh ;
+}
+.nav-link{
+	margin-top: auto;
+}
+.square_btn {
+	display: block;
+	position: relative;
+	width: 30px;
+	height: 30px;
+}
+ 
+.square_btn::before, .square_btn::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 1px; /* 棒の幅（太さ） */
+	height: 32px; /* 棒の高さ */
+	background: #383838; /* バツ印の色 */
+}
+ 
+.square_btn::before {
+  	transform: translate(-50%,-50%) rotate(45deg);
+}
+ 
+.square_btn::after {
+  	transform: translate(-50%,-50%) rotate(-45deg);
+}
+
+input[type="text"]{
+	background-color: #e8e8e8;
+	border: none;
+	margin-left: 1vh;
+	height: 3vh;
+	width: 70%;
+}
+
+.header-menu{
+	padding: 20px 0px;
+	margin-bottom: 6vh;
+
+}
+.menu{
+	text-align: right;
+	padding: 10px 30px;
+}
+
+.relative{
+	width: 200px;
+}

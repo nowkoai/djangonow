@@ -1,0 +1,19 @@
+{% block content %}{% load static %}
+
+{% load widget_tweaks %}
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}">
+</head>
+
+<div class="signup_container">
+    <h1>サインアップ</h1>
+    <form method="post">
+      {% csrf_token %}
+      <div class="email">{{ form.email }}</div>
+      <div class="date_of_birth">{{ form.date_of_birth }}</div>
+      <div class="password">{{ form.password }}</div>
+      <button type="submit" class="signup_btn">登録</button>
+    </form>
+</div>
+<a href="https://buy.stripe.com/3cscOhdE3fCp5q06oo">支払いのページへ</a>
+  {% endblock %}

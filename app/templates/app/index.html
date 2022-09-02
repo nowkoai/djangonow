@@ -1,0 +1,46 @@
+{% extends "app/base.html" %} {% load static %}
+{% block content %}
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+
+<div id="app">
+  <div id="header">
+    <ul class="header-menu">
+      <div class="menu">三</div>
+    </ul>
+  </div>
+  <div class="main">
+    <nav class="navbar" >
+      <div class="navbar-container"><h1>これからのこと</h1></div>
+      <a class="nav-link" href="{% url 'logout' %}"><span class="square_btn"></span></a>
+    </nav>
+    <div class="content">
+      <div class="posts" v-if="tasks.length">
+        <div class="wrapper" v-for="task, index in tasks" :style="{marginLeft: (task.indent * 40) + 'px'}">
+          <input type="checkbox" v-model="task.completed" v-on:change="updateTask(task)">
+          <input type="text" v-model="task.title" @input="onInput($event,task)"
+          @keydown.tab.exact.prevent="onTab(task, index)">
+          <button type="button" class="close" v-if="task.completed==true"
+          @click="deleteTask(task)">
+              <span>&times;</span>
+          </button>
+        </div>
+      </div>
+      <form name="myform" @submit.prevent="createTask">
+        <div class="form">
+          <div class="wrapper">
+            <input type="checkbox">
+            <input type="text" name="mytext" id="post_text" v-model="task.title" placeholder="ここに入力">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+  const URL = '{% url "app:index" %}';
+</script>
+{% endblock %} 
